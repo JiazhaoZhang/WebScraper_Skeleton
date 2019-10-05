@@ -7,6 +7,7 @@ package logic;
 
 import dao.FeedDAO;
 import entity.Feed;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -28,22 +29,32 @@ public class FeedLogic extends GenericLogic<Feed, FeedDAO>{
 
     @Override
     public List<String> getColumnNames() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       return Arrays.asList("id","path","type","name","Host_id");
     }
 
     @Override
     public List<String> getColumnCodes() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       return Arrays.asList(ID,PATH,TYPE,NAME,HOST_ID);
     }
 
     @Override
-    public List<?> extractDataAsList(Feed e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<?> extractDataAsList(Feed f) {
+       return Arrays.asList(f.getId(),f.getPath(),f.getType(),f.getName());
     }
 
     @Override
     public Feed createEntity(Map<String, String[]> requestData) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Feed feed = new Feed();
+        if(requestData.containsKey(ID)){
+            feed.setId(Integer.parseInt(requestData.get(ID)[0]));
+        }
+        feed.setPath(requestData.get(PATH)[0]);
+        feed.setType(requestData.get(TYPE)[0]);
+        feed.setName(requestData.get(NAME)[0]);
+        if(requestData.containsKey(HOST_ID)){
+           feed.setHostid(new HostLogic().getHostWithName(requestData.get(HOST_ID)[0]));
+        }
+        return feed;
     }
 
     @Override
@@ -53,7 +64,17 @@ public class FeedLogic extends GenericLogic<Feed, FeedDAO>{
 
     @Override
     public Feed getWithId(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        /*throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates. */
+        return get(()->dao().findById(id));
     }
     
 }
+
+/*
+class FeedSupplier<Feed>{
+    
+    @Override
+    public Feed get(){
+        return dao().findById(id);
+    }
+}*/

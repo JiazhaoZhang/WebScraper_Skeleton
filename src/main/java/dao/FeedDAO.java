@@ -30,9 +30,27 @@ public class FeedDAO extends GenericDAO<Feed>{
         return findResult("Feed.findById",map);
     }
     
-    public Feed findByName(String name){
+    public Feed findByPath( String path){
         Map<String, Object> map = new HashMap<>();
-        map.put("name",name);
-        return findResult("Feed.findByName",map);
+        map.put("path", path);
+        return findResult("Feed.findByPath",map);
+    }
+    
+    public List<Feed> findByType(String type){
+        Map<String, Object> map = new HashMap<>();
+        map.put("type", type);
+        return findResults("Feed.findByType", map);
+    }
+    
+    public List<Feed> findByName(String name){
+        Map<String, Object> map = new HashMap<>();
+        map.put("name", name);
+        return findResults("Feed.findByName", map);
+    }
+    
+    public List<Feed> findContaining(String search){
+        Map<String, Object> map = new HashMap<>();
+        map.put("search", search);
+        return this.findResults("Feed.findContaining", map);
     }
 }
