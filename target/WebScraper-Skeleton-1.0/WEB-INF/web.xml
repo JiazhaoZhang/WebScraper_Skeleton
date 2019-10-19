@@ -11,6 +11,25 @@
         <servlet-name>HostViewFancyJSPBAD</servlet-name>
         <url-pattern>/HostViewFancyJSPBAD</url-pattern>
     </servlet-mapping>
+    <!-- This is mapping of Account Table jsp-->
+    <servlet>
+        <servlet-name>AccountTable</servlet-name>
+        <jsp-file>/jsp/AccountTable.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AccountTable</servlet-name>
+        <url-pattern>/AccountTable</url-pattern>
+    </servlet-mapping>
+    
+     <!-- This is mapping of Feed Table jsp-->
+    <servlet>
+        <servlet-name>FeedTable</servlet-name>
+        <jsp-file>/jsp/FeedTable.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FeedTable</servlet-name>
+        <url-pattern>/FeedTable</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

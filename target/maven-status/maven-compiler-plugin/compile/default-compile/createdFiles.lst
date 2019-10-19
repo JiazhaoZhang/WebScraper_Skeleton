@@ -3,11 +3,13 @@ entity\Host_.class
 view\HostTableViewFancy.class
 entity\Account.class
 dao\EMFactory.class
+dao\AccountDAO.class
 entity\Account_.class
 view\SampleForm.class
 dao\HostDAO.class
 scraper\Scraper.class
 logic\FeedLogic.class
+logic\AccountLogic.class
 dao\GenericDAO.class
 dao\FeedDAO.class
 common\FileUtility.class
@@ -17,7 +19,9 @@ view\HostTableViewNormal.class
 logic\GenericLogic.class
 view\CreateHost.class
 view\HostTableViewFancyJSP.class
+logic\ImageLogic.class
 scraper\Sort.class
+dao\ImageDAO.class
 entity\Feed.class
 entity\Image_.class
 scraper\Post.class
