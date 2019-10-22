@@ -32,10 +32,9 @@
                     List<Account> accounts = al.getAll();
                     for(Account a:accounts){
                         out.print("<tr>");
-                        out.print("<td>"+a.getId()+"</td>");
-                        out.print("<td>"+a.getDisplayName()+"</td>");
-                        out.print("<td>"+a.getUser()+"</td>");
-                        out.print("<td>"+a.getPassword()+"</td>");
+                        for(Object data:al.extractDataAsList(a)){
+                            out.print("<td>"+data+"</td>");
+                        }
                         out.print("</tr>");
                     }
                 %>

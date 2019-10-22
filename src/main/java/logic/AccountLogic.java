@@ -48,16 +48,22 @@ public class AccountLogic extends GenericLogic<Account, AccountDAO> {
            a.setId(Integer.parseInt(parameterMap.get(ID)[0]));
        }
        if(parameterMap.containsKey(DISPLAY_NAME)){
+            if(parameterMap.get(DISPLAY_NAME)[0].length()==0 || parameterMap.get(DISPLAY_NAME)[0].length()>255 ){
+               throw new RuntimeException("Invalid Display name");
+           }
            a.setDisplayName(parameterMap.get(DISPLAY_NAME)[0]);
        }
        if(parameterMap.containsKey(USER)){
            //error checking
            if(parameterMap.get(USER)[0].length()==0 || parameterMap.get(USER)[0].length()>255 ){
-               return null;
+               throw new RuntimeException("Invalid username");
            }
            a.setUser(parameterMap.get(USER)[0]);
        }
        if(parameterMap.containsKey(PASSWORD)){
+            if(parameterMap.get(PASSWORD)[0].length()==0 || parameterMap.get(PASSWORD)[0].length()>255 ){
+               throw new RuntimeException("Invalid password");
+           }
            a.setPassword(parameterMap.get(PASSWORD)[0]);
        }
        return a;
@@ -72,5 +78,22 @@ public class AccountLogic extends GenericLogic<Account, AccountDAO> {
     public Account getWithId(int id) {
         return this.get(()->dao().findById(id));
     }
-
+    
+    public Account getWithDisplayName(String display_name){
+        return this.get(()->dao().findByDisplayName(display_name));
+    }
+    
+    public Account getWithUser(String user){
+        return this.get(()->dao().findByUser(user));
+    }
+    
+    public List<Account> getWithPassword (String password){
+        return this.get(()->dao().findByPassword(password));
+    }
+    
+    //add an account to DB
+    public void addAccount(Map<String, String[]> parameterMap){
+        Account account = this.createEntity(parameterMap);
+        this.add(account);     
+    }
 }

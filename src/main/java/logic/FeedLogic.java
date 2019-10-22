@@ -39,7 +39,7 @@ public class FeedLogic extends GenericLogic<Feed, FeedDAO>{
 
     @Override
     public List<?> extractDataAsList(Feed f) {
-       return Arrays.asList(f.getId(),f.getPath(),f.getType(),f.getName());
+       return Arrays.asList(f.getId(),f.getPath(),f.getType(),f.getName(),f.getHostid().getId());
     }
 
     @Override

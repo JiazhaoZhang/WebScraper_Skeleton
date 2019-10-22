@@ -17,6 +17,7 @@ entity\Host.class
 entity\Image.class
 view\HostTableViewNormal.class
 logic\GenericLogic.class
+view\CreateAccountServlet.class
 view\CreateHost.class
 view\HostTableViewFancyJSP.class
 logic\ImageLogic.class

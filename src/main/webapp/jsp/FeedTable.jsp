@@ -32,11 +32,9 @@
                     List<Feed> feeds = fl.getAll();
                     for(Feed feed:feeds){
                         out.print("<tr>");
-                        out.print("<td>"+feed.getId()+"</td>");
-                        out.print("<td>"+feed.getHostid().getId()+"</td>");
-                        out.print("<td>"+feed.getPath()+"</td>");
-                        out.print("<td>"+feed.getType()+"</td>");
-                        out.print("<td>"+feed.getName()+"</td>");
+                        for(Object data:fl.extractDataAsList(feed)){
+                            out.print("<td>"+data+"</td>");
+                        }
                         out.print("</tr>");
                     }
                 %>

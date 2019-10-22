@@ -30,9 +30,9 @@ public class AccountDAO extends GenericDAO<Account>{
         return findResult("Account.findById", map);
     }
     
-    public Account findByName(String name){
+    public Account findByDisplayName(String diaplay_name){
         Map<String, Object> map = new HashMap<>();
-        map.put("displayName", name);
+        map.put("displayName", diaplay_name);
         return findResult("Account.findByDisplayName",map);
     }
     
@@ -60,4 +60,5 @@ public class AccountDAO extends GenericDAO<Account>{
         map.put("search", search);
         return findResults("Account.findContaining",map);
     }
+
 }

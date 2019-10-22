@@ -41,7 +41,7 @@ public class ImageLogic extends GenericLogic<Image,ImageDAO>{
 
     @Override
     public List<?> extractDataAsList(Image image) {
-        return Arrays.asList(image.getId(),image.getFeedid(),image.getName(),image.getPath(),image.getDate());
+        return Arrays.asList(image.getId(),image.getFeedid().getId(),image.getName(),image.getPath(),image.getDate());
     }
 
     @Override

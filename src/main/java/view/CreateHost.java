@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Shariar
  */
-@WebServlet(name = "CreateHostBasic", urlPatterns = {"/CreateHostBasic"})
+@WebServlet(name = "CreateHostBasic", urlPatterns = {"/CreateHost"})
 public class CreateHost extends HttpServlet {
 
     private String errorMessage = null;

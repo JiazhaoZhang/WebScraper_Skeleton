@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
@@ -7,6 +7,10 @@
         <servlet-name>HostViewFancyJSPBAD</servlet-name>
         <jsp-file>/jsp/ShowTable-Host-BAD.jsp</jsp-file>
     </servlet>
+   <!-- <servlet>
+        <servlet-name>CreateAccountServlet</servlet-name>
+        <servlet-class>view.CreateAccountServlet</servlet-class>
+    </servlet> -->
     <servlet-mapping>
         <servlet-name>HostViewFancyJSPBAD</servlet-name>
         <url-pattern>/HostViewFancyJSPBAD</url-pattern>
@@ -20,8 +24,16 @@
         <servlet-name>AccountTable</servlet-name>
         <url-pattern>/AccountTable</url-pattern>
     </servlet-mapping>
-    
-     <!-- This is mapping of Feed Table jsp-->
+    <!-- This is mapping of Host Table jsp-->
+    <servlet>
+        <servlet-name>HostTable</servlet-name>
+        <jsp-file>/jsp/HostTable.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HostTable</servlet-name>
+        <url-pattern>/HostTable</url-pattern>
+    </servlet-mapping>
+    <!-- This is mapping of Feed Table jsp-->
     <servlet>
         <servlet-name>FeedTable</servlet-name>
         <jsp-file>/jsp/FeedTable.jsp</jsp-file>
@@ -30,6 +42,28 @@
         <servlet-name>FeedTable</servlet-name>
         <url-pattern>/FeedTable</url-pattern>
     </servlet-mapping>
+    <!-- This is mapping of Image Table jsp-->
+    <servlet>
+        <servlet-name>ImageTable</servlet-name>
+        <jsp-file>/jsp/ImageTable.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ImageTable</servlet-name>
+        <url-pattern>/ImageTable</url-pattern>
+    </servlet-mapping>
+    <!-- This is mapping of CreateAccount jsp-->
+    <servlet>
+        <servlet-name>CreateAccount</servlet-name>
+        <jsp-file>/jsp/CreateAccount.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateAccount</servlet-name>
+        <url-pattern>/CreateAccount</url-pattern>
+    </servlet-mapping>
+    <!--<servlet-mapping>
+        <servlet-name>CreateAccountServlet</servlet-name>
+        <url-pattern>/CreateAccountServlet</url-pattern>
+    </servlet-mapping> -->
     <session-config>
         <session-timeout>
             30
