@@ -9,6 +9,7 @@ import dao.FeedDAO;
 import dao.ImageDAO;
 import entity.Feed;
 import entity.Image;
+import java.sql.Date;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -47,26 +48,26 @@ public class ImageLogic extends GenericLogic<Image,ImageDAO>{
     @Override
     public Image createEntity(Map<String, String[]> requestData) {
         Image image = new Image();
-        if(requestData.containsKey(ID)){
-            image.setId(Integer.parseInt(requestData.get(ID)[0]));
+        if(requestData.containsKey(ImageLogic.ID)){
+            image.setId(Integer.parseInt(requestData.get(ImageLogic.ID)[0]));
         }
-        if(requestData.containsKey(FEED_ID)){
-            int feedId = Integer.parseInt(requestData.get(FEED_ID)[0]);
+        if(requestData.containsKey(ImageLogic.FEED_ID)){
+            int feedId = Integer.parseInt(requestData.get(ImageLogic.FEED_ID)[0]);
             FeedDAO feedDAO = new FeedDAO();
             Feed feed = feedDAO.findById(feedId);
             if(feed != null){
                 image.setFeedid(feed);
+            }else{
+                image.setFeedid(new Feed(1));
             }
         }
-        if(requestData.containsKey(NAME)){
-            image.setName(requestData.get(NAME)[0]);
+        if(requestData.containsKey(ImageLogic.NAME)){
+            image.setName(requestData.get(ImageLogic.NAME)[0]);
         }
-        if(requestData.containsKey(PATH)){
-            image.setPath(requestData.get(PATH)[0]);
+        if(requestData.containsKey(ImageLogic.PATH)){
+            image.setPath(requestData.get(ImageLogic.PATH)[0]);
         }
-        if(requestData.containsKey(DATE)){
-            image.setPath(requestData.get(DATE)[0]);
-        }
+        image.setDate(new Date(System.currentTimeMillis()));
         return image;
     }
 
@@ -99,5 +100,10 @@ public class ImageLogic extends GenericLogic<Image,ImageDAO>{
     @Override
     public List<Image> search(String search) {
        return get(()->dao().findContaining(search));
-    }  
+    }
+    
+    public void addImage(Map<String, String[]> parameterMap){
+       Image image = this.createEntity(parameterMap);
+       this.add(image);
+    }
 }

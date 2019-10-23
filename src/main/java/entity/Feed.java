@@ -31,6 +31,7 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Feed.findByPath", query = "SELECT f FROM Feed f join fetch f.hostid WHERE f.path = :path"),
     @NamedQuery(name = "Feed.findByType", query = "SELECT f FROM Feed f join fetch f.hostid WHERE f.type = :type"),
     @NamedQuery(name = "Feed.findByName", query = "SELECT f FROM Feed f join fetch f.hostid WHERE f.name = :name"),
+    @NamedQuery(name = "Feed.findByHostId", query = "SELECT f FROM Feed f join fetch f.hostid WHERE f.hostid.id = :hostid"),
     @NamedQuery(name = "Feed.findContaining", query = "SELECT f FROM Feed f join fetch f.hostid WHERE f.name like CONCAT('%', :search, '%') or f.path like CONCAT('%', :search, '%') or f.type like CONCAT('%', :search, '%')")})
 //the colon before names means it is substitutable variable.
 //named queries follow JPQL standard, which are object orianted SQL queries.

@@ -30,12 +30,12 @@
             <tbody>
                 <%
                     List<Image> images = il.getAll();
-                    for(Image image:images){
+                    for(Image image:images){ 
+                        out.print("<tr>");
                        for(Object data:il.extractDataAsList(image)){
-                           out.print("<tr>");
-                           out.print("<td>"+data+"</td>");
-                           out.print("</tr>");
+                        out.print("<td>"+data+"</td>");   
                        }
+                        out.print("</tr>");
                     }
                 %>
             </tbody>

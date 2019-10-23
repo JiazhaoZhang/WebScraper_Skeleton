@@ -20,6 +20,7 @@ logic\GenericLogic.class
 view\CreateAccountServlet.class
 view\CreateHost.class
 view\HostTableViewFancyJSP.class
+view\ImageDelivery.class
 logic\ImageLogic.class
 scraper\Sort.class
 dao\ImageDAO.class

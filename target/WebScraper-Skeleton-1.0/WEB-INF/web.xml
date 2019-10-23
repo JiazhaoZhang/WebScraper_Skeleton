@@ -64,6 +64,17 @@
         <servlet-name>CreateAccountServlet</servlet-name>
         <url-pattern>/CreateAccountServlet</url-pattern>
     </servlet-mapping> -->
+    
+    <!-- This is mapping of ImageView jsp-->
+    <servlet>
+        <servlet-name>ImageView</servlet-name>
+        <jsp-file>/jsp/ImageView.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ImageView</servlet-name>
+        <url-pattern>/ImageView</url-pattern>
+    </servlet-mapping>
+    
     <session-config>
         <session-timeout>
             30

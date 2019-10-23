@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context path="/WebScraper">
-  <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver" factory="org.apache.tomcat.jdbc.pool.DataSourceFactory" initialSize="1" logAbandoned="false" maxActive="100" maxIdle="10" maxWaitMillis="20" minIdle="0" name="WebScraper" password="8288" removeAbandoned="true" removeAbandonedTimeout="20" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/webscraper?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp; useLegacyDatetimeCode=false&amp; serverTimezone=UTC" username="cst8288"/>
+  <Resource auth="Container" 
+            driverClassName="com.mysql.jdbc.Driver" 
+            factory="org.apache.tomcat.jdbc.pool.DataSourceFactory" 
+            initialSize="1" 
+            logAbandoned="false" 
+            maxActive="100" 
+            maxIdle="10" 
+            maxWaitMillis="20" 
+            minIdle="0" 
+            name="WebScraper" 
+            password="8288" 
+            removeAbandoned="true" 
+            removeAbandonedTimeout="20" 
+            type="javax.sql.DataSource" 
+            url="jdbc:mysql://localhost:3306/webscraper?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp; useLegacyDatetimeCode=false&amp; serverTimezone=UTC" 
+            username="cst8288"/>
 </Context>
