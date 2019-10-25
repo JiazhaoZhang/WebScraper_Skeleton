@@ -18,13 +18,16 @@
     <body>
          <%
             if(request.getParameter("submit")!=null){
+                //{ display_name: abc}
+                //AccountLogic.DISPLAYNAME = "display_name"
                 String displayName = request.getParameter(AccountLogic.DISPLAY_NAME);
                 String user = request.getParameter(AccountLogic.USER);
                 String password = request.getParameter(AccountLogic.PASSWORD);
                 AccountLogic al = new AccountLogic();
                 try{
                     if(al.getWithDisplayName(displayName)==null&&al.getWithUser(user)==null){
-                        al.addAccount(request.getParameterMap());
+                        Account account = al.createEntity(request.getParameterMap());
+                        al.add(account);
                     }else{
                         out.println("<h3>User exist</h3>");
                     }
@@ -37,13 +40,13 @@
         <form id="createAccountForm" method="post">
         <table align="center">
             <tr>
-                <td>Display_Name : </td><td><input id="display_name" name="display_name" /></td>
+                <td>Display_Name : </td><td><input id="display_name" name="<% out.print(AccountLogic.DISPLAY_NAME); %>" /></td>
             </tr>
             <tr>
-                <td>user : </td><td><input id="user" name="user" /></td>
+                <td>user : </td><td><input id="user" name="<% out.print(AccountLogic.USER); %>" /></td>
             </tr>
             <tr>
-                <td>password : </td><td><input id="password" name="password" /></td>
+                <td>password : </td><td><input id="password" name="<% out.print(AccountLogic.PASSWORD); %>" /></td>
             </tr>
              <tr>
                  <td><button type="submit" id="submit" name="submit">Submit</button></td><td><button type="reset" id="cancel" name="cancel">Cancel</button></td>

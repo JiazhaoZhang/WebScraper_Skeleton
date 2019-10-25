@@ -75,6 +75,15 @@
         <url-pattern>/ImageView</url-pattern>
     </servlet-mapping>
     
+    <!-- This is mapping of Create Feed jsp-->
+    <servlet>
+        <servlet-name>CreateFeed</servlet-name>
+        <jsp-file>/jsp/CreateFeed.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateFeed</servlet-name>
+        <url-pattern>/CreateFeed</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

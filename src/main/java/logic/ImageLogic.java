@@ -46,26 +46,20 @@ public class ImageLogic extends GenericLogic<Image,ImageDAO>{
     }
 
     @Override
-    public Image createEntity(Map<String, String[]> requestData) {
+    public Image createEntity(Map<String, String[]> requestData){
         Image image = new Image();
         if(requestData.containsKey(ImageLogic.ID)){
             image.setId(Integer.parseInt(requestData.get(ImageLogic.ID)[0]));
         }
-        if(requestData.containsKey(ImageLogic.FEED_ID)){
-            int feedId = Integer.parseInt(requestData.get(ImageLogic.FEED_ID)[0]);
-            FeedDAO feedDAO = new FeedDAO();
-            Feed feed = feedDAO.findById(feedId);
-            if(feed != null){
-                image.setFeedid(feed);
-            }else{
-                image.setFeedid(new Feed(1));
-            }
-        }
         if(requestData.containsKey(ImageLogic.NAME)){
             image.setName(requestData.get(ImageLogic.NAME)[0]);
+        }else{
+            throw new RuntimeException("Name cannot be empty");
         }
         if(requestData.containsKey(ImageLogic.PATH)){
             image.setPath(requestData.get(ImageLogic.PATH)[0]);
+        }else{
+            throw new RuntimeException("Path cannot be empty");
         }
         image.setDate(new Date(System.currentTimeMillis()));
         return image;
@@ -102,8 +96,5 @@ public class ImageLogic extends GenericLogic<Image,ImageDAO>{
        return get(()->dao().findContaining(search));
     }
     
-    public void addImage(Map<String, String[]> parameterMap){
-       Image image = this.createEntity(parameterMap);
-       this.add(image);
-    }
+ 
 }

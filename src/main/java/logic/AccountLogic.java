@@ -90,10 +90,4 @@ public class AccountLogic extends GenericLogic<Account, AccountDAO> {
     public List<Account> getWithPassword (String password){
         return this.get(()->dao().findByPassword(password));
     }
-    
-    //add an account to DB
-    public void addAccount(Map<String, String[]> parameterMap){
-        Account account = this.createEntity(parameterMap);
-        this.add(account);     
-    }
 }

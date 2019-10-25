@@ -21,7 +21,7 @@ public class FeedLogic extends GenericLogic<Feed, FeedDAO>{
     public static final String PATH = "path";
     public static final String TYPE = "type";
     public static final String NAME = "name";
-    public static final String HOST_ID = "hostId";
+    public static final String HOST_ID = "host_id";
     
     public FeedLogic(){
         super(new FeedDAO());
@@ -48,11 +48,25 @@ public class FeedLogic extends GenericLogic<Feed, FeedDAO>{
         if(requestData.containsKey(ID)){
             feed.setId(Integer.parseInt(requestData.get(ID)[0]));
         }
-        feed.setPath(requestData.get(PATH)[0]);
-        feed.setType(requestData.get(TYPE)[0]);
-        feed.setName(requestData.get(NAME)[0]);
+        if(requestData.containsKey(PATH)){
+            if(requestData.get(PATH)[0].equals("")){
+                throw new RuntimeException("Path should not be empty");
+            }
+            feed.setPath(requestData.get(PATH)[0]);
+        }
+            
+        if(requestData.containsKey(TYPE)){
+            feed.setType(requestData.get(TYPE)[0]);
+        }else{
+            throw new RuntimeException("Type should not be empty");
+        }
+        if(requestData.containsKey(NAME)){
+            feed.setName(requestData.get(NAME)[0]);
+        }else{
+            throw new RuntimeException("Name should not be empty");
+        }
         if(requestData.containsKey(HOST_ID)){
-           feed.setHostid(new HostLogic().getHostWithName(requestData.get(HOST_ID)[0]));
+           feed.setHostid(new HostLogic().getWithId(Integer.parseInt(requestData.get(HOST_ID)[0])));
         }
         return feed;
     }
@@ -68,6 +82,9 @@ public class FeedLogic extends GenericLogic<Feed, FeedDAO>{
         return get(()->dao().findById(id));
     }
     
+    public Feed getWithPath(String path){
+        return get(()->dao().findByPath(path));
+    }
 }
 
 /*

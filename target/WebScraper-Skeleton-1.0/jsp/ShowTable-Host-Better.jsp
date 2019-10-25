@@ -21,7 +21,7 @@
             var activeEditID = -1;
             function createTextInput(text, name) {
                 var node = document.createElement("input");
-                node.name = name;
+                node.name = name;   
                 node.className = "editor";
                 node.type = "text";
                 node.value = text;
